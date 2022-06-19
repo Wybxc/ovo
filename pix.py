@@ -6,12 +6,13 @@ gs = len(grays)
 
 print(sys.argv[1])
 img = Image.open(sys.argv[1]).convert("L")
-px = img.load()
-
+img = img.resize((img.width, int(img.height / 2.4)))
 w = img.width
 h = img.height
 
-for y in range(0, h, 2):
+px = img.load()
+
+for y in range(0, h):
     for x in range(w):
         idx = px[x, y] * gs // 255
         if idx == gs:
